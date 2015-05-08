@@ -1,0 +1,47 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{textpos}
+
+\usecolortheme{dove}
+
+\title[Title]{Title}
+\author{Author}
+\institute{Institute}
+\date{\today}
+
+\logo{\includegraphics[height=1cm]{sysbio.jpg}\vspace{230pt}}
+
+\definecolor{chalmersblue}{RGB}{0,0,102}
+\setbeamercolor{footlinecolor}{fg=white,bg=chalmersblue}
+
+\makeatother
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=0.99\paperwidth,ht=8ex,dp=1ex,right]{footlinecolor}%
+      \includegraphics[height=0.7cm]{cth.eps}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.01\paperwidth,ht=8ex,dp=1ex]{footlinecolor}%
+    \end{beamercolorbox}
+  }
+  \vskip0pt%
+}
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+{
+\setbeamertemplate{logo}{\includegraphics[height=2cm]{sysbio.jpg}\vspace{200pt}}
+\begin{frame}
+\maketitle
+\end{frame}
+}
+
+\begin{frame}{Frame title}
+  \begin{itemize}
+  \item Item 1
+  \item Item 2
+  \end{itemize}
+\end{frame}
+
+\end{document}

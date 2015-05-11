@@ -1,10 +1,11 @@
 all:
-	pdflatex *.tex
+	pdflatex --shell-escape *.tex
 
 dist-clean: clean
 	rm *.pdf
 
 clean:
-	rm *.aux *.log *.nav *.out *.snm *.toc
+	rm *.aux *.log *.nav *.out *.snm *.toc *.vrb
+	rm -rf _minted*
 
 

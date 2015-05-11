@@ -1,6 +1,9 @@
 \documentclass{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage{textpos}
+\usepackage{minted}
+\usepackage{etoolbox}
+\AtBeginEnvironment{minted}{\fontsize{10}{10}\selectfont}
 
 \usecolortheme{dove}
 
@@ -37,11 +40,444 @@
 \end{frame}
 }
 
-\begin{frame}{Frame title}
+\begin{frame}{Today's goals}
   \begin{itemize}
-  \item Item 1
-  \item Item 2
+  \item A working Git setup
+  \item Enough knowledge to start tracking your work with Git
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Today's goals}
+  Things we won't cover today (but that will be part of the next workshop):
+
+  \begin{itemize}
+    \item Incorporating changes from others (a.k.a. merging)
+    \item Handling conflicts when merging
+    \item Collaborating with other people using Git
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Why version control?
+\end{frame}
+
+\begin{frame}{Why version control?}
+  \center
+  \Huge It lets us track versions.
+  \pause
+
+  \huge (In a sane way.)
+\end{frame}
+
+\begin{frame}{Why version control?}
+  \center
+  \Huge It lets us easily document changes.
+\end{frame}
+
+\begin{frame}{Why version control?}
+  \center
+  \Huge It simplifies collaboration.
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Why Git?
+\end{frame}
+
+\begin{frame}{Why Git?}
+  \center
+  \Huge There are many version control systems.
+  \pause
+
+  \huge (CVS, SVN, Mercurial, Darcs, ...)
+\end{frame}
+
+\begin{frame}{Why Git?}
+  \center
+  \Huge Git is the most popular one.
+  \pause
+
+  \large (Used by Google, Facebook, Microsoft, Twitter, Netflix, Android, Linux, ...)
+\end{frame}
+
+\begin{frame}{Why Git?}
+  \center
+  \Huge Lots of users means lots of available help.
+\end{frame}
+
+\begin{frame}{Why Git?}
+  \center
+  \Huge Because I got to pick it.
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Git terminology
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge Git tracks files and content you add in a database
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge Everything resides in your work directory
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge Everything resides in your work directory
+
+  \huge This is called a ``repository''
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge Each repository is independent from each other
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge Keep things that are unrelated in different repositories
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge Changes stored in Git are called ``commits''
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge The commit history is a graph
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge The commit history is a graph
+
+  \Large $ \circ \rightarrow \circ \rightarrow \bullet $
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge Git allows you to create ``branches''
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge Branches lets you work on different versions without overwriting your changes
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge The main branch is called ``master''
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge Branches are easy to create and easy to use
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge Git keeps a pointer called ``HEAD''
+
+  \Large This points to your current place in the graph
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge HEAD changes when you move between branches or in the commit history
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge HEAD changes when you move between branches or in the commit history
+
+  \huge and when you add new commits
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Exercise 0: Basic configuration
+\end{frame}
+
+\begin{frame}[fragile]{Exercise 0: Basic configuration}
+  Outcome:
+
+  \begin{minted}{text}
+    $ git config --get user.name
+    Matthias Nilsson
+    $ git config --get user.email
+    mattiasn@chalmers.se
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise 0: Basic configuration}
+  Commands:
+
+  \begin{minted}{text}
+    $ git config --global user.name "Your Name"
+    $ git config --global user.email "you@chalmers.se"
+  \end{minted}
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Exercise 1: Create a new repository
+\end{frame}
+
+\begin{frame}[fragile]{Exercise 1: Create a new repository}
+  Outcome:
+
+  \begin{minted}{text}
+    $ ls -a
+    . .. .git
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise 1: Create a new repository}
+  Commands:
+
+  \begin{minted}{text}
+    $ mkdir repo && cd repo
+    $ git init
+  \end{minted}
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Exercise 2: Add your first file
+\end{frame}
+
+\begin{frame}[fragile]{Exercise 2: Add your first file}
+  Outcome:
+
+  \begin{minted}{text}
+    $ git log
+    commit e443e98a88b2f7175b213ca54b07668c69a6af18
+    Author: Matthias Nilsson <mattiasn@chalmers.se>
+    Date:   Wed May 6 13:02:12 2015 +0200
+
+        initial commit
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise 2: Add your first file}
+  Commands:
+
+  \begin{minted}{text}
+    $ touch file1
+    $ git add file1
+    $ git commit
+  \end{minted}
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Anatomy of a commit
+\end{frame}
+
+\begin{frame}[fragile]{Anatomy of a commit}
+  \begin{minted}{text}
+    commit e443e98a88b2f7175b213ca54b07668c69a6af18
+    Author: Matthias Nilsson <mattiasn@chalmers.se>
+    Date:   Wed May 6 13:02:12 2015 +0200
+
+        initial commit
+  \end{minted}
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Writing commit messages
+\end{frame}
+
+\begin{frame}{Writing commit messages}
+  Good commit messages:
+  \begin{enumerate}
+    \item Start with a short description (in imperative form) of what was done
+    \item Contains detailed explanatory text (if necessary) after a blank line
+    \item Explain WHAT was done and WHY
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Writing commit messages}
+  \begin{minted}{text}
+    Add support for navigation by touch
+
+    Previous version would, if in darkness, run or walk
+    straight into things, which would cause embarrassment,
+    injury, and/or death.
+
+    This change allows subject to navigate safely in
+    the dark.
+
+    Closes #45512, #55237
+  \end{minted}
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Getting other people's code
+\end{frame}
+
+\begin{frame}{Getting other people's code}
+  \center
+  \Huge Email
+\end{frame}
+
+\begin{frame}{Getting other people's code}
+  \center
+  \Huge Download
+\end{frame}
+
+\begin{frame}{Getting other people's code}
+  \center
+  \Huge Cloning with Git
+\end{frame}
+
+\begin{frame}{Getting other people's code}
+  \center
+  \Huge Forking on GitHub
+
+  \Large (And then cloning with Git)
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Exercise 3: Clone a repository
+\end{frame}
+
+% FIXME
+\begin{frame}[fragile]{Exercise 3: Clone a repository}
+  Outcome:
+
+  \begin{minted}{text}
+    $ ls git_workshop
+    file1 file2
+  \end{minted}
+\end{frame}
+
+% FIXME
+\begin{frame}[fragile]{Exercise 3: Clone a repository}
+  Commands:
+
+  \begin{minted}{text}
+    $ git clone ...
+  \end{minted}
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Exercise 4: Fork a repository
+\end{frame}
+
+% FIXME
+\begin{frame}{Exercise 4: Fork a repository}
+  \center
+  \Huge https://github.com/.../repo
+\end{frame}
+
+% FIXME
+\begin{frame}{Exercise 4: Fork a repository}
+  \center
+  \Huge https://github.com/.../repo
+  \Large Click on "Fork"
+\end{frame}
+
+\begin{frame}{Exercise 4: Fork a repository}
+  \center
+  \Huge Now clone it!
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Exercise 5: Push changes
+\end{frame}
+
+% FIXME
+\begin{frame}{Exercise 5: Push changes}
+  Outcome:
+
+  Check repo on GitHub
+\end{frame}
+
+\begin{frame}[fragile]{Exercise 5: Push changes}
+  Commands:
+
+  \begin{minted}{text}
+    $ git add
+    $ git commit
+    $ git push
+  \end{minted}
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Exercise 6: Branches
+\end{frame}
+
+\begin{frame}[fragile]{Exercise 6: Branches}
+  Outcome:
+
+  \begin{minted}{text}
+    $ git branch
+      bar
+    * foo
+      master
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise 6: Branches}
+  Commands:
+
+  \begin{minted}{text}
+    $ git branch bar
+    $ git branch
+    $ git checkout bar
+    $ git checkout -b foo
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise 6: Branches}
+  My regular work flow:
+
+  \begin{minted}{text}
+    $ git checkout -b my-branch
+    $ git push -u
+  \end{minted}
+\end{frame}
+
+\begin{frame}{Exercise 6: Branches}
+  \center
+  \Large
+  Last command creates the branch on GitHub and tells Git to track changes to it
+  \pause
+
+  This is something you almost always want to do
+
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge What to do in case of fire
+\end{frame}
+
+\begin{frame}{What to do in case of fire}
+  \begin{enumerate}
+    \item Keep calm, most things can be fixed
+    \item Read the documentation (can be confusing)
+    \item Pro Git book: https://git-scm.herokuapp.com/book/en/v2
+    \item Google it (StackOverflow has lots of help)
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{}
+  \center
+  \Huge Questions?
 \end{frame}
 
 \end{document}

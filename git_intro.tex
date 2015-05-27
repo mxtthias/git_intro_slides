@@ -350,22 +350,20 @@
   \Huge Exercise 3: Clone a repository
 \end{frame}
 
-% FIXME
 \begin{frame}[fragile]{Exercise 3: Clone a repository}
   Outcome:
 
   \begin{minted}{text}
-    $ ls git_workshop
-    file1 file2
+    $ ls git_intro
+    README.md
   \end{minted}
 \end{frame}
 
-% FIXME
 \begin{frame}[fragile]{Exercise 3: Clone a repository}
   Commands:
 
   \begin{minted}{text}
-    $ git clone ...
+    $ git clone https://github.com/SysBioChalmers/git_intro.git
   \end{minted}
 \end{frame}
 
@@ -374,22 +372,20 @@
   \Huge Exercise 4: Fork a repository
 \end{frame}
 
-% FIXME
 \begin{frame}{Exercise 4: Fork a repository}
   \center
-  \Huge https://github.com/.../repo
-\end{frame}
+  \large \mintinline{text}{https://github.com/SysBioChalmers/git_intro}
+  \pause
 
-% FIXME
-\begin{frame}{Exercise 4: Fork a repository}
-  \center
-  \Huge https://github.com/.../repo
   \Large Click on "Fork"
 \end{frame}
 
 \begin{frame}{Exercise 4: Fork a repository}
   \center
   \Huge Now clone it!
+  \pause
+
+  \LARGE (Make sure you use the SSH clone URL!)
 \end{frame}
 
 \begin{frame}{}
@@ -397,7 +393,6 @@
   \Huge Exercise 5: Push changes
 \end{frame}
 
-% FIXME
 \begin{frame}{Exercise 5: Push changes}
   Outcome:
 
@@ -408,6 +403,7 @@
   Commands:
 
   \begin{minted}{text}
+    $ git diff
     $ git add
     $ git commit
     $ git push

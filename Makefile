@@ -1,5 +1,5 @@
 all:
-	pdflatex --shell-escape *.tex
+	pdflatex --interaction=nonstopmode --shell-escape *.tex
 
 dist-clean: clean
 	rm *.pdf

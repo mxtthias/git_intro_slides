@@ -1,6 +1,7 @@
 \documentclass{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage{textpos}
+\usepackage{hyperref}
 \usepackage{minted}
 \usepackage{etoolbox}
 \AtBeginEnvironment{minted}{\fontsize{10}{10}\selectfont}
@@ -170,6 +171,50 @@
 \begin{frame}{Git terminology}
   \center
   \Huge Changes stored in Git are called ``commits''
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge Before changes are stored you need to ``stage'' them
+\end{frame}
+
+\begin{frame}{Git terminology}
+  \center
+  \Huge Staged changes live in  the ``staging area''
+\end{frame}
+
+\begin{frame}{Git terminology - Staging area}
+  \center
+  \Huge Think of it as an envelope
+\end{frame}
+
+\begin{frame}{Git terminology - Staging area}
+  \center
+  \includegraphics[height=3cm]{mail45.pdf}
+
+  \Large You add things to the envelope until you're happy
+
+  \vspace{2cm}
+  \scriptsize (Icon made by \href{http://www.simpleicon.com}{SimpleIcon}
+  from \href{http://www.flaticon.com}{www.flaticon.com} is licensed
+  under \href{http://creativecommons.org/licenses/by/3.0/}{CC BY 3.0}.)
+\end{frame}
+
+\begin{frame}{Git terminology - Staging area}
+  \center
+  \includegraphics[height=2.7cm]{email26.pdf}
+
+  \Large Once you're happy, you seal the envelope and move on to the next one
+
+  \vspace{2cm}
+  \scriptsize (Icon made by \href{http://www.simpleicon.com}{SimpleIcon}
+  from \href{http://www.flaticon.com}{www.flaticon.com} is licensed
+  under \href{http://creativecommons.org/licenses/by/3.0/}{CC BY 3.0}.)
+\end{frame}
+
+\begin{frame}{Git terminology - Staging area}
+  \center
+  \Huge We'll see how this works in the exercises
 \end{frame}
 
 \begin{frame}{Git terminology}

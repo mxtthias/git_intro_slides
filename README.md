@@ -21,8 +21,8 @@ them in the repository:
 
 ## Compiling
 
-Just running `make' should produce a PDF. To allow compiling without
-the graphics, `pdflatex' skips any errors, so make sure all
+Just running `make` should produce a PDF. To allow compiling without
+the graphics, `pdflatex` skips any errors, so make sure all
 dependencies are installed first.
 
 
